@@ -6,7 +6,7 @@ const sliderBtn = document.getElementById("create-slider");
 const sliderContainer = document.getElementById("sliders");
 // selected image
 let sliders = [];
-
+//enter for search button
 document
   .getElementById("search")
   .addEventListener("keypress", function (event) {
@@ -14,6 +14,7 @@ document
       document.getElementById("search-btn").click();
     }
   });
+//enter for create slider(for bonus)
 document
   .getElementById("duration")
   .addEventListener("keypress", function (event) {
@@ -51,9 +52,6 @@ const getImages = (query) => {
     .then((response) => response.json())
     .then((data) => showImages(data.hits))
     .catch((err) => console.log(err));
-  // toggleSpinner();
-
-  // selectItem();
 };
 
 let slideIndex = 0;
@@ -81,10 +79,7 @@ const createSlider = () => {
     alert("Enter a positive  duration value");
     return;
   }
-  //   if (document.getElementById('duration').value < 0) {
-  //     alert('Enter positive value');
-  //     return;
-  // }
+
   // crate slider previous next area
   sliderContainer.innerHTML = "";
   const prevNext = document.createElement("div");
@@ -94,7 +89,7 @@ const createSlider = () => {
   <span class="prev" onclick="changeItem(-1)"><i class="fas fa-chevron-left"></i></span>
   <span class="next" onclick="changeItem(1)"><i class="fas fa-chevron-right"></i></span>
   `;
-  //  if(data.value>0){}
+
   sliderContainer.appendChild(prevNext);
   document.querySelector(".main").style.display = "block";
   // hide image aria
@@ -152,10 +147,8 @@ searchBtn.addEventListener("click", function () {
 sliderBtn.addEventListener("click", function () {
   createSlider();
 });
-
+//spinner(for bonus)
 const toggleSpinner = () => {
   const spinner = document.getElementById("loading-spinner");
   spinner.classList.toggle("d-none");
-
-  // toggleSpinner();
 };
